@@ -19,7 +19,7 @@ def duplicate_no_change(nums: list) -> int:
     high = len(nums) - 1
     while(high >= low):
         mid = (high + low) // 2
-        n = sum(low<=i<=mid for i in nums)
+        n = sum(low <= i <= mid for i in nums)
         if high == low:
             if n > 1:
                 return high
@@ -27,7 +27,7 @@ def duplicate_no_change(nums: list) -> int:
                 break
         else:
             if n > mid - low + 1:
-                high = mid
+                high = mid  # NOTICE
             else:
                 low = mid + 1
     return -1
