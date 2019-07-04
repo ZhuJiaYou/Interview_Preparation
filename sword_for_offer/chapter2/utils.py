@@ -21,6 +21,15 @@ def construct_linklist(nodes: 'iterable') -> 'LinkedList':  # NOQA
     return head.next
 
 
+def pretty_linklist(head: 'ListNode') -> str:
+    ans = []
+    h = head
+    while h:
+        ans.append(str(h.val))
+        h = h.next
+    return '->'.join(ans)
+
+
 def preorder_traversal(root: TreeNode) -> list:
     def dfs(node):
         if node:
