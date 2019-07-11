@@ -48,3 +48,18 @@ def inorder_traversal(root: TreeNode) -> list:
             yield from dfs(node.right)
 
     return list(dfs(root))
+
+
+def deserialize_tree(data):
+    nodes = data.split(',')[::-1]
+    return deserialize_tree_util(nodes)
+
+
+def deserialize_tree_util(nodes):
+    val = nodes.pop()
+    if val == "$":
+        return None
+    root = TreeNode(int(val))
+    root.left = deserialize_tree_util(nodes)
+    root.right = deserialize_tree_util(nodes)
+    return root
