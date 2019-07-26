@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 from utils import ListNode, pretty_linklist
 
 
@@ -41,5 +43,26 @@ def copyRandomList2(head: 'RandomListNode') -> 'RandomListNode':
     return cp[head]
 
 
-if __name__ == '__main__':
+def check_same(h1, h2):
+    n1, n2 = h1, h2
+    while n1 and n2:
+        if n1.val != n2.val:
+            return False
+        if n1.random and n2.random:
+            if n1.random.val != n2.random.val:
+                return False
+        elif n1.random is not n2.random:
+            return False
+        n1, n2 = n1.next, n2.next
+    return n1 is n2
 
+
+if __name__ == '__main__':
+    n1, n2, n3 = RandomListNode(1), RandomListNode(2), RandomListNode(3)
+    n4, n5 = RandomListNode(4), RandomListNode(5)
+    n1.next, n2.next, n3.next, n4.next = n2, n3, n4, n5
+    n3.random, n2.random = n1, n5
+    print(pretty_linklist(n1))
+    head2 = copyRandomList2(n1)
+    print(pretty_linklist(head2))
+    print(check_same(n1, head2))
