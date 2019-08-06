@@ -10,7 +10,6 @@ def get_max(m):
     return pre_line_max[-1]
 
 
-
 if __name__ == '__main__':
     m = [[1, 10, 3, 8], [12, 2, 9, 6], [5, 7, 4, 11], [3, 7, 16, 5]]
     print(get_max(m))
