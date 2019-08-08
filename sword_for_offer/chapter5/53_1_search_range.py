@@ -36,15 +36,9 @@ def search_range(nums, target):
     if nums[low] == target and right == -1:
         right = low
     return left, right
-    
-
-        
-
-
 
 
 if __name__ == '__main__':
     nums = [1, 2, 3]
     target = 2
     print(search_range(nums, target))
-
