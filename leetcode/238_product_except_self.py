@@ -9,12 +9,6 @@ def product_except_self(nums):
         output[i] *= now
         now *= nums[i]
     return output
-    
-
-
-
-
-
 
 
 if __name__ == '__main__':
