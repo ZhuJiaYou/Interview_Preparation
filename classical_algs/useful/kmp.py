@@ -25,4 +25,4 @@ def kmp(s, t):
 
 
 if __name__ == '__main__':
-    print(kmp("ababababca", "abababca"))
+    print(kmp("AABBCBBABBCACCD", "BBABBCAC"))

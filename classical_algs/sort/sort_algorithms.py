@@ -150,8 +150,6 @@ def counting_sort(arr, max_val):
             bucket[i] -= 1
 
 
-
-
 if __name__ == '__main__':
     a = [2, 8, 5, 7, 2, 3, 0, 4]
     # bubble_sort(a)

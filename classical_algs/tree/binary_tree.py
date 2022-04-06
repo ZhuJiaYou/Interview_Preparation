@@ -6,34 +6,28 @@ class BinaryNode:
 
 
 def pre_traverse(root):
-    if root == None:
-        return
-    print(root.value)
-    preTraverse(root.left)
-    preTraverse(root.right)
+    if root:
+        print(root.value)
+        pre_traverse(root.left)
+        pre_traverse(root.right)
 
 
 def pre_traverse_no_recur(root):
-    if root == None:
-        return
-    rights = []
-
-    pos = root
-    while (pos != None) or (len(rights) > 0):
-        if pos == None:
-            pos = rights.pop()
-        else:
-            print(pos.value)
-            rights.append(pos.right)
-            pos = pos.left
+    r = []
+    s = [root]
+    while s:
+        p = s.pop()
+        if p:
+            print(p.value)
+            s.append(p.right)
+            s.append(p.left)
 
 
 def post_traverse(root):
-    if root == None:
-        return
-    post_traverse(root.left)
-    post_traverse(root.right)
-    print(root.value, end=" ")
+    if root:
+        post_traverse(root.left)
+        post_traverse(root.right)
+        print(root.value, end=" ")
 
 
 def post_traverse_no_recur(root):
@@ -80,12 +74,10 @@ def post_traverse_no_recur(root):
 
 
 def post_traverse_no_recur2(root):
-    if root == None:
-        return
     stack = list()
-    stack.append(root)
-    stack.append(root)
-    pos = root
+    if root:
+        stack.append(root)
+        stack.append(root)
     while len(stack) > 0:
         pos = stack.pop()
         if (len(stack) > 0) and (pos == stack[-1]):
@@ -100,26 +92,35 @@ def post_traverse_no_recur2(root):
 
 
 def mid_traverse(root):
-    if root == None:
-        return
-    mid_traverse(root.left)
-    print(root.value, end=" ")
-    mid_traverse(root.right)
+    if root:
+        mid_traverse(root.left)
+        print(root.value, end=" ")
+        mid_traverse(root.right)
 
 
 def mid_traverse_no_recur(root):
-    if not root:
-        return
-    p = root
     stack = []
-    while p or stack:
-        if p:
-            stack.append(p)
-            p = p.left
+    while root or stack:
+        if root:
+            stack.append(root)
+            root = root.left
         else:
-            p = stack.pop()
-            print(p.value, end=" ")
-            p = p.right
+            root = stack.pop()
+            print(root.value, end=" ")
+            root = root.right
+
+
+def level_traverse(root):
+    q = []
+    if root:
+        q.append(root)
+    while q:
+        for n in q:
+            print(n.value, end=' ')
+        t = []
+        for i in q:
+            t += [i.left, i.right]
+        q = [j for j in t if j]
 
 
 if __name__ == '__main__':
@@ -129,3 +130,5 @@ if __name__ == '__main__':
     mid_traverse(root)
     print()
     mid_traverse_no_recur(root)
+    print()
+    level_traverse(root)

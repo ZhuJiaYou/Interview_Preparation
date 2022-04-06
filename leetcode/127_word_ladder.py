@@ -1,4 +1,4 @@
-from sys import maxsize
+from sys import ize
 from collections import deque
 
 
